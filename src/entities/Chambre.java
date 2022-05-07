@@ -1,5 +1,6 @@
 package entities;
 
 public class Chambre {
-	public int id;
+
+	public int chambreId;
 }
