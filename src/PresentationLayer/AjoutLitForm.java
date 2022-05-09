@@ -80,7 +80,7 @@ public void header()
 	contentPane.add(header, BorderLayout.NORTH);
 	
 	JLabel AJOUTMEDECIN = new JLabel("AJOUT LIT");
-	AJOUTMEDECIN.setIcon(new ImageIcon("D:\\Marie\\eclipse-workspace\\Cure Clinic\\src\\assets\\info80.png"));
+	AJOUTMEDECIN.setIcon(new ImageIcon("D:\\Marie\\eclipse-workspace\\Cure Clinic\\src\\assets\\hospital-bed.png"));
 	AJOUTMEDECIN.setHorizontalAlignment(SwingConstants.CENTER);
 	AJOUTMEDECIN.setFont(new Font("Poppins SemiBold", Font.BOLD, 30));
 	AJOUTMEDECIN.setForeground(Color.WHITE);
