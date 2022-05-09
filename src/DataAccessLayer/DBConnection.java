@@ -21,7 +21,7 @@ public class DBConnection {
          }
 
          try {
-             DBConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "");
+             DBConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/cure_clinic", "root", "");
              System.out.println("Database Connected!");
          } catch (Exception se) {
              JOptionPane.showMessageDialog(null, "Database Connection Failed!");

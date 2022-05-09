@@ -4,6 +4,10 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
@@ -29,6 +33,7 @@ import javax.swing.JTextField;
 import java.awt.GridLayout;
 import javax.swing.DropMode;
 import java.awt.TextField;
+import javax.swing.JPasswordField;
 
 public class AjoutMedecinForm extends JFrame  {
 
@@ -55,19 +60,20 @@ public class AjoutMedecinForm extends JFrame  {
 public void initComponent()
 	{
 		setFont(new Font("Poppins Medium", Font.PLAIN, 12));
-		setTitle("Ajout Medecin");
+		setTitle("CURE CLINIC");
 		setForeground(Color.DARK_GRAY);
 		setBackground(Color.DARK_GRAY);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(AjoutMedecinForm.class.getResource("/assets/hostel.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 498);
+		setBounds(100, 100, 450, 641);
 		
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.control);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
+		contentPane.setLayout(new BorderLayout(10, 5));
 		setContentPane(contentPane);
 	}
+
 public void header()
 {
 	JPanel header = new JPanel();
@@ -75,7 +81,7 @@ public void header()
 	header.setBackground(Color.DARK_GRAY);
 	FlowLayout fl_header = (FlowLayout) header.getLayout();
 	fl_header.setHgap(0);
-	fl_header.setVgap(20);
+	fl_header.setVgap(10);
 	contentPane.add(header, BorderLayout.NORTH);
 	
 	JLabel AJOUTMEDECIN = new JLabel("AJOUT MEDECIN");
@@ -85,36 +91,23 @@ public void header()
 	AJOUTMEDECIN.setBackground(Color.WHITE);
 	header.add(AJOUTMEDECIN);	
 }	
-public void footer()
-{
-}
+
 public void content()
 {
 	JPanel content = new JPanel();
 	contentPane.add(content, BorderLayout.CENTER);
 	
 	firstName = new javax.swing.JLabel("First Name");
-	//firstName.setBounds(50,50,50,50);
 	firstName.setFont(new Font("Poppins Medium", Font.BOLD, 20));
 	firstName.setForeground(new Color(0, 150, 150));
-	content.setLayout(new GridLayout(0, 2, 6, 6));
+	content.setLayout(new GridLayout(0, 2, 6, 5));
 	ln = new JTextField();
 	f = new JTextField();
-	pwd = new JTextField();
-	
-	submit = new JButton();
-	submit.setBackground(Color.DARK_GRAY);
-	submit.setForeground(Color.WHITE);
-	submit.setFont(new Font("Poppins SemiBold", Font.PLAIN, 20));
-	submit.setText("Submit");
-	submit.setToolTipText("Submit");
-	
 	content.add(firstName);
 	
 	
-	fn = new JTextField();
-	fn.setMinimumSize(new java.awt.Dimension(200, 30));
-	fn.setPreferredSize(new java.awt.Dimension(200, 30));
+	fn = new JTextField(0);
+	fn.setSize(200, 30);
     
 	content.add(fn);
 	
@@ -134,23 +127,56 @@ public void content()
 	password.setFont(new Font("Poppins Medium", Font.BOLD, 20));
 	password.setForeground(new Color(0, 150, 150));
 	content.add(password);
+	
+	pwd = new JPasswordField();
+	pwd.setColumns(2);
 	content.add(pwd);
 	
+	
+}
+
+public void footer()
+{
+	JPanel footer;
+	footer = new JPanel();
+	contentPane.add(footer, BorderLayout.SOUTH);
+	footer.setLayout(new GridLayout(1, 2, 6, 20));
+	
+	
 	clear = new JButton();
+	footer.add(clear);
 	clear.setBackground(new Color(255, 182, 193));
 	clear.setForeground(Color.WHITE);
 	clear.setFont(new Font("Poppins SemiBold", Font.PLAIN, 20));
 	clear.setText("Clear");
 	clear.setToolTipText("Clear");
 	
+	submit = new JButton();
+	footer.add(submit);
+	submit.setBackground(Color.DARK_GRAY);
+	submit.setForeground(Color.WHITE);
+	submit.setFont(new Font("Poppins SemiBold", Font.PLAIN, 20));
+	submit.setText("Submit");
+	submit.setToolTipText("Submit");
+	
 	clear.addMouseListener(new java.awt.event.MouseAdapter() {
         public void mousePressed(java.awt.event.MouseEvent evt) {
-            ClearButtonMousePressed(evt);
+            clearButtonMousePressed(evt);
         }
     });
-	content.add(clear);
-	content.add(submit);
+	
+	submit.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mousePressed(java.awt.event.MouseEvent evt) {
+            try {
+				submitButtonMousePressed(evt);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        }
+    });
 }
+
 public void clearFields() {
     fn.setText(null);
     ln.setText(null);
@@ -158,31 +184,60 @@ public void clearFields() {
     f.setText(null);
 }
 
-public void ClearButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClearButtonMousePressed
+public void clearButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClearButtonMousePressed
     clearFields();
 }
-public AjoutMedecinForm() {
+
+public void submitButtonMousePressed(java.awt.event.MouseEvent evt) throws SQLException {//GEN-FIRST:event_ClearButtonMousePressed
+	saveMedecinInfo();
+}
+
+public void saveMedecinInfo() throws SQLException
+{
+	@SuppressWarnings("deprecation")
+	 String sqlQuery ="insert into medecin(FirstName,LastName,Speciality,Password) values (?,?,?,?)";
+	 PreparedStatement  statement = DBConnection.connect().prepareStatement(sqlQuery);
+	 
+	 statement.setString(1, fn.getText()); 
+	 statement.setString(2, ln.getText()); 
+	 statement.setString(3, f.getText()); 
+	 statement.setString(4, pwd.getPassword().toString()); 
+	 
+	 statement.executeUpdate();
+	 System.out.println("Inserted...");
+}
+
+public AjoutMedecinForm() throws SQLException {
 
 		initComponent();
 		header();
 		content();
 		footer();
+		String allQuery = "select * from chambre";
+		Statement statement = DBConnection.connect().createStatement();
+		ResultSet res = statement.executeQuery(allQuery);
+		while(res.next())
+		{	
+			int id = res.getInt("id");
+			System.out.print("Chamber number"+ id +"\n");
+		}	
 }
 
-//Variables
-public javax.swing.JLabel firstName;
-public javax.swing.JLabel lastName;
-public javax.swing.JLabel field;
-public javax.swing.JLabel password;
+// Variables
+	public javax.swing.JLabel firstName;
+	public javax.swing.JLabel lastName;
+	public javax.swing.JLabel field;
+	public javax.swing.JLabel password;
+	
+	public javax.swing.JTextField fn;
+	public javax.swing.JTextField ln;
+	public javax.swing.JTextField f;
+	private JPasswordField pwd;
+	
+	public javax.swing.JButton submit;
+	public javax.swing.JButton clear;
 
-public javax.swing.JTextField fn;
-public javax.swing.JTextField ln;
-public javax.swing.JTextField f;
-public javax.swing.JTextField pwd;
 
-public javax.swing.JButton submit;
-public javax.swing.JButton clear;
-private TextField textField;
 
 
 
