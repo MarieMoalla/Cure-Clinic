@@ -6,5 +6,5 @@ public class Medecin
 	public String lastName;
 	public String firstName;
 	public String specialite;
-	
+	public String password;
 }

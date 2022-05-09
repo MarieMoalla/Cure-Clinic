@@ -7,7 +7,7 @@ import DataAccessLayer.Main;
 
 public class ChambreServices {
 
-	public static void getChambers() throws Exception
+	public static Connection getChambers() throws Exception
 	{
 		    String allQuery = "select * from chambre";
 		    Connection conn = Main.getConnection();
@@ -18,6 +18,7 @@ public class ChambreServices {
 				int id = res.getInt("id");
 				System.out.print("Chamber number"+ id +"\n");
 			}	
+			return conn;
 	}
 	
 }
