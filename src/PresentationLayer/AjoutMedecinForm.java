@@ -65,7 +65,7 @@ public void initComponent()
 		setTitle("CURE CLINIC");
 		setForeground(Color.DARK_GRAY);
 		setBackground(Color.DARK_GRAY);
-		setIconImage(Toolkit.getDefaultToolkit().getImage(AjoutMedecinForm.class.getResource("/assets/hostel.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\Marie\\eclipse-workspace\\Cure Clinic\\src\\assets\\hostel.png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 641);
 		
@@ -87,7 +87,7 @@ public void header()
 	contentPane.add(header, BorderLayout.NORTH);
 	
 	JLabel AJOUTMEDECIN = new JLabel("AJOUT MEDECIN");
-	AJOUTMEDECIN.setIcon(new ImageIcon(AjoutMedecinForm.class.getResource("/assets/teacher.png")));
+	AJOUTMEDECIN.setIcon(new ImageIcon("D:\\Marie\\eclipse-workspace\\Cure Clinic\\src\\assets\\teacher.png"));
 	AJOUTMEDECIN.setHorizontalAlignment(SwingConstants.CENTER);
 	AJOUTMEDECIN.setFont(new Font("Poppins SemiBold", Font.BOLD, 30));
 	AJOUTMEDECIN.setForeground(Color.WHITE);
@@ -97,27 +97,30 @@ public void header()
 
 public void content()
 {
+	
 	JPanel content = new JPanel();
 	contentPane.add(content, BorderLayout.CENTER);
+	content.setLayout(new GridLayout(2, 2, 5, 5));
 	
 	firstName = new javax.swing.JLabel("First Name");
 	firstName.setFont(new Font("Poppins Medium", Font.BOLD, 20));
 	firstName.setForeground(new Color(0, 150, 150));
+
 	content.setLayout(new GridLayout(0, 2, 6, 5));
-	ln = new JTextField();
 	f = new JTextField();
 	content.add(firstName);
 	
 	
 	fn = new JTextField(0);
 	fn.setSize(200, 30);
-    
+	
 	content.add(fn);
 	
 	lastName = new javax.swing.JLabel("Last Name");
 	lastName.setFont(new Font("Poppins Medium", Font.BOLD, 20));
 	lastName.setForeground(new Color(0, 150, 150));
 	content.add(lastName);
+	ln = new JTextField();
 	content.add(ln);
 	
 	field = new javax.swing.JLabel("Field");
@@ -134,7 +137,6 @@ public void content()
 	pwd = new JPasswordField();
 	pwd.setColumns(2);
 	content.add(pwd);
-	
 	
 }
 
@@ -167,6 +169,7 @@ public void footer()
 	//btnNewButton.setPreferredSize(new Dimension(260, 140));
 	submit.setSelectedIcon(new ImageIcon(AjoutChambreFrom.class.getResource("/assets/btn300x60.png")));
 	
+
 	
 	clear.addMouseListener(new java.awt.event.MouseAdapter() {
         public void mousePressed(java.awt.event.MouseEvent evt) {

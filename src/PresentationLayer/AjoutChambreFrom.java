@@ -53,7 +53,7 @@ public void initComponent()
 		setTitle("CURE CLINIC");
 		setForeground(Color.DARK_GRAY);
 		setBackground(Color.DARK_GRAY);
-		setIconImage(Toolkit.getDefaultToolkit().getImage(AjoutMedecinForm.class.getResource("/assets/hostel.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\Marie\\eclipse-workspace\\Cure Clinic\\src\\assets\\hostel.png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 260);
 		
@@ -75,7 +75,7 @@ public void header()
 	contentPane.add(header, BorderLayout.NORTH);
 	
 	JLabel AJOUTMEDECIN = new JLabel("AJOUT CHAMBRE");
-	AJOUTMEDECIN.setIcon(new ImageIcon(AjoutChambreFrom.class.getResource("/assets/form_add.png")));
+	AJOUTMEDECIN.setIcon(new ImageIcon("D:\\Marie\\eclipse-workspace\\Cure Clinic\\src\\assets\\form_add.png"));
 	AJOUTMEDECIN.setHorizontalAlignment(SwingConstants.CENTER);
 	AJOUTMEDECIN.setFont(new Font("Poppins SemiBold", Font.BOLD, 30));
 	AJOUTMEDECIN.setForeground(Color.WHITE);
