@@ -41,6 +41,8 @@ public class AjoutMedecinForm extends JFrame  {
 	URL iconURL = getClass().getResource("/assets/college_mang_icon.png");
 	ImageIcon icon = new ImageIcon(iconURL);
 	Connection con = DBConnection.connect();
+	
+	
 	public static void main(String[] args)  {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -56,7 +58,7 @@ public class AjoutMedecinForm extends JFrame  {
 
 	/**
 	 * Create the frame.
-	 */
+	 **/
 public void initComponent()
 	{
 		setFont(new Font("Poppins Medium", Font.PLAIN, 12));
@@ -85,8 +87,9 @@ public void header()
 	contentPane.add(header, BorderLayout.NORTH);
 	
 	JLabel AJOUTMEDECIN = new JLabel("AJOUT MEDECIN");
+	AJOUTMEDECIN.setIcon(new ImageIcon(AjoutMedecinForm.class.getResource("/assets/teacher.png")));
 	AJOUTMEDECIN.setHorizontalAlignment(SwingConstants.CENTER);
-	AJOUTMEDECIN.setFont(new Font("Poppins SemiBold", Font.BOLD, 38));
+	AJOUTMEDECIN.setFont(new Font("Poppins SemiBold", Font.BOLD, 30));
 	AJOUTMEDECIN.setForeground(Color.WHITE);
 	AJOUTMEDECIN.setBackground(Color.WHITE);
 	header.add(AJOUTMEDECIN);	
@@ -153,11 +156,17 @@ public void footer()
 	
 	submit = new JButton();
 	footer.add(submit);
-	submit.setBackground(Color.DARK_GRAY);
-	submit.setForeground(Color.WHITE);
-	submit.setFont(new Font("Poppins SemiBold", Font.PLAIN, 20));
-	submit.setText("Submit");
-	submit.setToolTipText("Submit");
+	submit.setFont(new Font("Poppins Medium", Font.BOLD, 20)); // NOI18N
+	submit.setForeground(new java.awt.Color(255, 255, 255));
+	submit.setIcon(new ImageIcon(AjoutChambreFrom.class.getResource("/assets/btn300x60.png"))); // NOI18N
+	submit.setText("Save");
+	submit.setBorder(null);
+	submit.setBorderPainted(false);
+	submit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+	submit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+	//btnNewButton.setPreferredSize(new Dimension(260, 140));
+	submit.setSelectedIcon(new ImageIcon(AjoutChambreFrom.class.getResource("/assets/btn300x60.png")));
+	
 	
 	clear.addMouseListener(new java.awt.event.MouseAdapter() {
         public void mousePressed(java.awt.event.MouseEvent evt) {
