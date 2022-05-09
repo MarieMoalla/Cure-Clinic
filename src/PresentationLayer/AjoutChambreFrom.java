@@ -54,7 +54,6 @@ public void initComponent()
 		setForeground(Color.DARK_GRAY);
 		setBackground(Color.DARK_GRAY);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\Marie\\eclipse-workspace\\Cure Clinic\\src\\assets\\hostel.png"));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 260);
 		
 		contentPane = new JPanel();
@@ -130,6 +129,7 @@ public void saveChambreInfo() throws SQLException
 }
 
 	public AjoutChambreFrom() throws SQLException {
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		initComponent();
 		header();
 		content();

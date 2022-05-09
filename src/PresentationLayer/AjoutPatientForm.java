@@ -63,14 +63,14 @@ public class AjoutPatientForm extends JFrame {
 		});
 	}
 
-	public void initComponent()
+public void initComponent()
 	{
 		setFont(new Font("Poppins Medium", Font.PLAIN, 12));
 		setTitle("CURE CLINIC");
 		setForeground(Color.DARK_GRAY);
 		setBackground(Color.DARK_GRAY);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\Marie\\eclipse-workspace\\Cure Clinic\\src\\assets\\hostel.png"));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 451);
 		
 		contentPane = new JPanel();

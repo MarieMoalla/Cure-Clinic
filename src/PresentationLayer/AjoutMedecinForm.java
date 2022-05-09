@@ -66,7 +66,7 @@ public void initComponent()
 		setForeground(Color.DARK_GRAY);
 		setBackground(Color.DARK_GRAY);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\Marie\\eclipse-workspace\\Cure Clinic\\src\\assets\\hostel.png"));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 641);
 		
 		contentPane = new JPanel();
@@ -244,7 +244,7 @@ public AjoutMedecinForm() throws SQLException {
 	public javax.swing.JTextField fn;
 	public javax.swing.JTextField ln;
 	public javax.swing.JTextField f;
-	private JPasswordField pwd;
+	public JPasswordField pwd;
 	
 	public javax.swing.JButton submit;
 	public javax.swing.JButton clear;
