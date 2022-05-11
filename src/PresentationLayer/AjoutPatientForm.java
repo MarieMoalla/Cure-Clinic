@@ -290,7 +290,7 @@ public void saveLitInfo() throws SQLException
 {
 	//String selectedValue = chambreList.getSelectedItem().toString();
 	
-			 if(litList != null)
+			 if(litList.getSelectedItem() != null)
 			 {
 			 String sqlQuery ="insert into patient(FirstName, LastName, Maladie, Age, Telephone, LitId, MedecinId) value(?,?,?,?,?,?,?)";
 			 PreparedStatement  statement = DBConnection.connect().prepareStatement(sqlQuery);
@@ -305,21 +305,21 @@ public void saveLitInfo() throws SQLException
 			 statement.setString(7, medecinList.getSelectedItem().toString());
 			 
 			 statement.executeUpdate();
-			 String id ="";
+			 int id = 0 ;
 			 {  
 				
-				String patientQuery = "select id from patient where litid="+litList.getSelectedItem();
+				String patientQuery = "select * from patient where litid="+litList.getSelectedItem();
 			    Statement statement3 = DBConnection.connect().createStatement();
 				ResultSet res3 = statement3.executeQuery(patientQuery);
-				//d=res3.getString("id");
-				System.out.print(id);
+				
+				if(res3.next()) id=res3.getInt("id");
 			 }
 			 //change lit's patient id to new patient's id
 			 String litQuery = "update lit set patientid=? where id=?";
 			 PreparedStatement  statement2 = DBConnection.connect().prepareStatement(litQuery);
-			 statement2.setString(1,id);
+			 statement2.setString(1,Integer.toString(id));
 			 statement2.setString(2, litList.getSelectedItem().toString());
-			 //statement2.executeUpdate();
+			 statement2.executeUpdate();
 			 
 			 System.out.println("Inserted...");
 			 }
