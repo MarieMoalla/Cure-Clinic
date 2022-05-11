@@ -26,6 +26,8 @@ import java.awt.FlowLayout;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
+
 import java.awt.GridBagLayout;
 import javax.swing.JSplitPane;
 import javax.swing.JTextField;
@@ -67,7 +69,7 @@ public void initComponent()
 		setBackground(Color.DARK_GRAY);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\Marie\\eclipse-workspace\\Cure Clinic\\src\\assets\\hostel.png"));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 641);
+		setBounds(100, 100, 450, 429);
 		
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.control);
@@ -87,7 +89,7 @@ public void header()
 	contentPane.add(header, BorderLayout.NORTH);
 	
 	JLabel AJOUTMEDECIN = new JLabel("AJOUT MEDECIN");
-	AJOUTMEDECIN.setIcon(new ImageIcon("D:\\Marie\\eclipse-workspace\\Cure Clinic\\src\\assets\\teacher.png"));
+	AJOUTMEDECIN.setIcon(new ImageIcon("D:\\Marie\\eclipse-workspace\\Cure Clinic\\src\\assets\\medical-team.png"));
 	AJOUTMEDECIN.setHorizontalAlignment(SwingConstants.CENTER);
 	AJOUTMEDECIN.setFont(new Font("Poppins SemiBold", Font.BOLD, 30));
 	AJOUTMEDECIN.setForeground(Color.WHITE);
@@ -100,43 +102,51 @@ public void content()
 	
 	JPanel content = new JPanel();
 	contentPane.add(content, BorderLayout.CENTER);
-	content.setLayout(new GridLayout(2, 2, 5, 5));
-	
+	content.setLayout(null);
+
 	firstName = new javax.swing.JLabel("First Name");
+	firstName.setBounds(10, 10, 199, 30);
 	firstName.setFont(new Font("Poppins Medium", Font.BOLD, 20));
 	firstName.setForeground(new Color(0, 150, 150));
-
-	content.setLayout(new GridLayout(0, 2, 6, 5));
 	f = new JTextField();
+	f.setBounds(216, 90, 200, 30);
+	content.setLayout(null);
 	content.add(firstName);
 	
 	
 	fn = new JTextField(0);
+	fn.setLocation(216, 10);
 	fn.setSize(200, 30);
 	
 	content.add(fn);
 	
 	lastName = new javax.swing.JLabel("Last Name");
+	lastName.setBounds(10, 50, 199, 30);
 	lastName.setFont(new Font("Poppins Medium", Font.BOLD, 20));
 	lastName.setForeground(new Color(0, 150, 150));
 	content.add(lastName);
 	ln = new JTextField();
+	ln.setBounds(216, 50, 200, 30);
 	content.add(ln);
 	
 	field = new javax.swing.JLabel("Field");
+	field.setBounds(10, 90, 199, 30);
 	field.setFont(new Font("Poppins Medium", Font.BOLD, 20));
 	field.setForeground(new Color(0, 150, 150));
 	content.add(field);
 	content.add(f);
 	
 	password = new javax.swing.JLabel("Password");
+	password.setBounds(10, 130, 199, 30);
 	password.setFont(new Font("Poppins Medium", Font.BOLD, 20));
 	password.setForeground(new Color(0, 150, 150));
 	content.add(password);
 	
 	pwd = new JPasswordField();
+	pwd.setBounds(216, 130, 200, 30);
 	pwd.setColumns(2);
 	content.add(pwd);
+	
 	
 }
 
@@ -216,6 +226,9 @@ public void saveMedecinInfo() throws SQLException
 	 statement.setString(4, pwd.getPassword().toString()); 
 	 
 	 statement.executeUpdate();
+	 ImageIcon icon = new ImageIcon("src/asstes/checked.PNG");
+	 JOptionPane.showMessageDialog(null, "Doctor Successfully added!", "Added", 1,icon);
+	 clearFields();
 	 System.out.println("Inserted...");
 }
 

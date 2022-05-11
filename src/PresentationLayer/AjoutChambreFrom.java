@@ -54,7 +54,7 @@ public void initComponent()
 		setForeground(Color.DARK_GRAY);
 		setBackground(Color.DARK_GRAY);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\Marie\\eclipse-workspace\\Cure Clinic\\src\\assets\\hostel.png"));
-		setBounds(100, 100, 450, 260);
+		setBounds(100, 100, 450, 254);
 		
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.control);

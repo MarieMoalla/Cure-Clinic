@@ -53,7 +53,7 @@ public void initComponent()
 		setBackground(new java.awt.Color(51, 51, 51));
 		setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\Marie\\eclipse-workspace\\Cure Clinic\\src\\assets\\hostel.png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 924, 722);
+		setBounds(100, 100, 924, 741);
 		
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.inactiveCaptionBorder);
@@ -94,7 +94,7 @@ public void content () throws IOException
 		JPanel imageSpot = new JPanel();
 		imageSpot.setBackground(SystemColor.inactiveCaptionBorder);
 		FlowLayout fl_imageSpot = (FlowLayout) imageSpot.getLayout();
-		fl_imageSpot.setVgap(30);
+		fl_imageSpot.setVgap(50);
 		content.add(imageSpot, BorderLayout.NORTH);
 		
 		JLabel homePic = new JLabel();

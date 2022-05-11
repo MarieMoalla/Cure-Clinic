@@ -27,6 +27,7 @@ import DataAccessLayer.Main;
 
 import java.awt.GridLayout;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
@@ -62,7 +63,7 @@ public void initComponent()
 		setBackground(Color.DARK_GRAY);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\Marie\\eclipse-workspace\\Cure Clinic\\src\\assets\\hostel.png"));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 368);
+		setBounds(100, 100, 450, 288);
 		
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.control);
@@ -95,9 +96,10 @@ public void content() throws SQLException
 {
 	JPanel content = new JPanel();
 	contentPane.add(content, BorderLayout.CENTER);
-	content.setLayout(new GridLayout(2, 2, 5, 5));
+	content.setLayout(null);
 	
 	JLabel patientLabel = new JLabel("Patient List");
+	patientLabel.setBounds(5, 10, 200, 30);
 	content.add(patientLabel);
 	patientLabel.setFont(new Font("Poppins Medium", Font.BOLD, 20));
 	patientLabel.setForeground(new Color(0, 150, 150));
@@ -107,12 +109,14 @@ public void content() throws SQLException
 	patientList.setMaximumRowCount(10);
 	patientList.setSelectedItem(null);
 	patientList = new javax.swing.JComboBox<>();
+	patientList.setBounds(215, 10, 200, 30);
 	patientList.setModel(new DefaultComboBoxModel(new String[] {"None"}));
 	patientList.setFont(new Font("Poppins", Font.PLAIN, 20));
 	content.add(patientList);
 	remplirtList(patientList,"patient");
 	
 	JLabel chambreLabel = new JLabel("Chambre List\r\n");
+	chambreLabel.setBounds(5, 50, 200, 30);
 	content.add(chambreLabel);
 	chambreLabel.setFont(new Font("Poppins Medium", Font.BOLD, 20));
 	chambreLabel.setForeground(new Color(0, 150, 150));
@@ -122,6 +126,7 @@ public void content() throws SQLException
 	chambreList.setMaximumRowCount(10);
 	chambreList.setSelectedItem(null);
 	chambreList = new javax.swing.JComboBox<>();
+	chambreList.setBounds(215, 50, 200, 30);
 	chambreList.setFont(new Font("Poppins", Font.PLAIN, 20));
 	content.add(chambreList);
 	remplirtList(chambreList,"chambre");
@@ -186,17 +191,35 @@ public void clearButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:
 
 public void remplirtList(JComboBox list,String type) throws SQLException
 {
-	String allQuery = "select * from "+type+"";
+
     Connection conn = DBConnection.connect();
-    Statement statement = conn.createStatement();
-	ResultSet res = statement.executeQuery(allQuery);
-	while(res.next())
-	{	
-		int id = res.getInt("id");
-		list.addItem(id);
-		System.out.print(type+" number"+ id +"\n");
-	}	
-	System.out.print(type+" totale"+ list.getItemCount()+"\n");
+	if(type == "patient")
+	{
+		String patientQuery = "select * from patient where litid is null ";
+	    Statement statement2 = conn.createStatement();
+		ResultSet res2 = statement2.executeQuery(patientQuery);
+		while(res2.next())
+		{	
+			int id = res2.getInt("id");
+			list.addItem(id);
+			System.out.print("patient number"+ id +"\n");
+		}	
+	}
+	else 
+	{
+		String allQuery = "select * from "+type+"";
+	    Statement statement = conn.createStatement();
+		ResultSet res = statement.executeQuery(allQuery);
+		while(res.next())
+		{	
+			int id = res.getInt("id");
+			
+			list.addItem(id);
+			System.out.print(type+" number"+ id +"\n");
+		}	
+		System.out.print(type+" totale"+ list.getItemCount()+"\n");
+	}
+	
 }
 
 public void submitButtonMousePressed(java.awt.event.MouseEvent evt) throws SQLException {//GEN-FIRST:event_ClearButtonMousePressed
@@ -226,12 +249,12 @@ public void saveLitInfo() throws SQLException
 			 statement.setString(2, patientList.getSelectedItem().toString());
 			 
 			 statement.executeUpdate();
-			 System.out.println("Inserted...");
-		}
 
-	
-	
-	 
+		}
+	 ImageIcon icon = new ImageIcon("src/asstes/checked.PNG");
+	 JOptionPane.showMessageDialog(null, "Bed Successfully added!", "Added", 1,icon);
+	 clearFields();
+	 System.out.println("Inserted..."); 
 }
 
 public AjoutLitForm() throws SQLException {

@@ -20,6 +20,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -71,7 +72,7 @@ public void initComponent()
 		setBackground(Color.DARK_GRAY);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\Marie\\eclipse-workspace\\Cure Clinic\\src\\assets\\hostel.png"));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 451);
+		setBounds(100, 100, 450, 502);
 		
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.control);
@@ -104,43 +105,52 @@ public void content() throws SQLException
 {
 	JPanel content = new JPanel();
 	contentPane.add(content, BorderLayout.CENTER);
-	content.setLayout(new GridLayout(2, 2, 5, 5));
 	
 	firstName = new javax.swing.JLabel("First Name");
+	firstName.setBounds(6, 0, 200, 30);
 	firstName.setFont(new Font("Poppins Medium", Font.BOLD, 20));
 	firstName.setForeground(new Color(0, 150, 150));
-	content.setLayout(new GridLayout(0, 2, 6, 5));
 	ln = new JTextField();
+	ln.setBounds(216, 40, 200, 30);
 	m = new JTextField();
+	m.setBounds(216, 80, 200, 30);
+	content.setLayout(null);
+	content.setLayout(null);
 	content.add(firstName);
 	
 	
 	fn = new JTextField(0);
-	fn.setSize(200, 30);
+	fn.setBounds(216, 0, 200, 30);
 	
 	a = new JTextField();
+	a.setBounds(216, 125,  200, 30);
 	t = new JTextField();
+	t.setBounds(216, 165,  200, 30);
 	content.add(fn);
 	
 	lastName = new javax.swing.JLabel("Last Name");
+	lastName.setBounds(6, 37,  200, 30);
 	lastName.setFont(new Font("Poppins Medium", Font.BOLD, 20));
 	lastName.setForeground(new Color(0, 150, 150));
 	content.add(lastName);
 	content.add(ln);
 	
 	maladie = new javax.swing.JLabel("Maladie");
+	maladie.setBounds(6, 80,  200, 30);
 	maladie.setFont(new Font("Poppins Medium", Font.BOLD, 20));
 	maladie.setForeground(new Color(0, 150, 150));
 	content.add(maladie);
 	content.add(m);
 	
 	age = new javax.swing.JLabel("Age");
+	age.setBounds(6, 125, 200, 30);
 	age.setFont(new Font("Poppins Medium", Font.BOLD, 20));
 	age.setForeground(new Color(0, 150, 150));
 	content.add(age);
 	content.add(a);
 	
 	telephone = new javax.swing.JLabel("Telephone");
+	telephone.setBounds(6, 165,  200, 30);
 	telephone.setFont(new Font("Poppins Medium", Font.BOLD, 20));
 	telephone.setForeground(new Color(0, 150, 150));
 	content.add(telephone);
@@ -148,6 +158,7 @@ public void content() throws SQLException
 	
 	
 	JLabel litLabel = new JLabel("Lit List");
+	litLabel.setBounds(6, 205,  200, 30);
 	content.add(litLabel);
 	litLabel.setFont(new Font("Poppins Medium", Font.BOLD, 20));
 	litLabel.setForeground(new Color(0, 150, 150));
@@ -158,11 +169,13 @@ public void content() throws SQLException
 	litList.setMaximumRowCount(10);
 	litList.setSelectedItem(null);
 	litList = new javax.swing.JComboBox<>();
+	litList.setBounds(216, 205,  200, 30);
 	litList.setFont(new Font("Poppins", Font.PLAIN, 20));
 	content.add(litList);
 	remplirLitList(litList);
 	
 	JLabel medecinLabel = new JLabel("Medecin List\r\n");
+	medecinLabel.setBounds(6, 245,  200, 30);
 	content.add(medecinLabel);
 	medecinLabel.setFont(new Font("Poppins Medium", Font.BOLD, 20));
 	medecinLabel.setForeground(new Color(0, 150, 150));
@@ -172,6 +185,7 @@ public void content() throws SQLException
 	medecinList.setMaximumRowCount(10);
 	medecinList.setSelectedItem(null);
 	medecinList = new javax.swing.JComboBox<>();
+	medecinList.setBounds(216, 245,  200, 30);
 	medecinList.setFont(new Font("Poppins", Font.PLAIN, 20));
 	content.add(medecinList);
 	remplirtList(medecinList,"medecin");
@@ -291,6 +305,22 @@ public void saveLitInfo() throws SQLException
 			 statement.setString(7, medecinList.getSelectedItem().toString());
 			 
 			 statement.executeUpdate();
+			 String id ="";
+			 {  
+				
+				String patientQuery = "select id from patient where litid="+litList.getSelectedItem();
+			    Statement statement3 = DBConnection.connect().createStatement();
+				ResultSet res3 = statement3.executeQuery(patientQuery);
+				//d=res3.getString("id");
+				System.out.print(id);
+			 }
+			 //change lit's patient id to new patient's id
+			 String litQuery = "update lit set patientid=? where id=?";
+			 PreparedStatement  statement2 = DBConnection.connect().prepareStatement(litQuery);
+			 statement2.setString(1,id);
+			 statement2.setString(2, litList.getSelectedItem().toString());
+			 //statement2.executeUpdate();
+			 
 			 System.out.println("Inserted...");
 			 }
 			 else
@@ -309,6 +339,10 @@ public void saveLitInfo() throws SQLException
 				 statement.executeUpdate();
 				 System.out.println("Inserted...");
 			 }
+			 
+			 ImageIcon icon = new ImageIcon("src/asstes/checked.PNG");
+			 JOptionPane.showMessageDialog(null, "Patient Successfully added!", "Added", 1,icon);
+			 clearFields();
 }
 
 	public AjoutPatientForm() throws SQLException {

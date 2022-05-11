@@ -91,17 +91,18 @@ public class MedecinList extends JFrame {
 	{
 		JPanel content = new JPanel();
 		contentPane.add(content, BorderLayout.CENTER);
-		content.setLayout(new BorderLayout(5, 5));
+		content.setLayout(null);
 		{
 			JScrollPane scrollPane = new JScrollPane();
-			content.add(scrollPane, BorderLayout.CENTER);
+			scrollPane.setBounds(0, 54, 920, 305);
+			content.add(scrollPane);
 			{
 				
 				table.setFillsViewportHeight(true);
 				table.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
-				table.setBackground(new Color(230, 230, 250));
+				table.setBackground(Color.WHITE);
 				table.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-				table.setFont(new Font("Poppins Medium", Font.PLAIN, 15));
+				table.setFont(new Font("Poppins Medium", Font.PLAIN, 12));
 				table.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 				table.setGridColor(new java.awt.Color(102, 102, 102));
 				table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
@@ -118,15 +119,18 @@ public class MedecinList extends JFrame {
 			}
 			{
 				JPanel panel = new JPanel();
-				content.add(panel, BorderLayout.NORTH);
+				panel.setBounds(0, 0, 920, 49);
+				content.add(panel);
+				panel.setLayout(null);
 				{
 					
 					JButton deleteBtn = new JButton();
+					deleteBtn.setBounds(744, 10, 176, 39);
 					panel.add(deleteBtn);
 					deleteBtn.setBackground(new Color(255, 182, 193));
-					deleteBtn.setFont(new Font("Poppins SemiBold", Font.PLAIN,20));
+					deleteBtn.setFont(new Font("Poppins SemiBold", Font.PLAIN, 15));
 					deleteBtn.setText("DELETE");
-					deleteBtn.setToolTipText("Clear");
+					deleteBtn.setToolTipText("\r\n");
 					deleteBtn.addMouseListener(new java.awt.event.MouseAdapter() {
 				        public void mousePressed(java.awt.event.MouseEvent evt) {
 				            try {
@@ -162,7 +166,7 @@ public class MedecinList extends JFrame {
 		    statement2.executeUpdate(deleteQuery);
 			//ResultSet res2 = statement2.executeQuery(deleteQuery);
 			ImageIcon icon = new ImageIcon("src/asstes/checked.png");
-			JOptionPane.showMessageDialog(null, "Doctor Successfully added!", "Done", 1,icon);
+			JOptionPane.showMessageDialog(null, "Doctor Successfully deleted!", "Deleted", 1,icon);
 			this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
 		}
 	}
