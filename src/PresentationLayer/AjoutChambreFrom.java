@@ -69,7 +69,7 @@ public void header()
 {
 	JPanel header = new JPanel();
 	header.setToolTipText("");
-	header.setBackground(Color.DARK_GRAY);
+	header.setBackground(new java.awt.Color(60, 185, 145));
 	FlowLayout fl_header = (FlowLayout) header.getLayout();
 	fl_header.setHgap(0);
 	fl_header.setVgap(10);

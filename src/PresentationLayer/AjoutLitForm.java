@@ -76,7 +76,7 @@ public void header()
 {
 	JPanel header = new JPanel();
 	header.setToolTipText("");
-	header.setBackground(Color.DARK_GRAY);
+	header.setBackground(new java.awt.Color(60, 185, 145));
 	FlowLayout fl_header = (FlowLayout) header.getLayout();
 	fl_header.setHgap(0);
 	fl_header.setVgap(10);
@@ -245,8 +245,13 @@ public void saveLitInfo() throws SQLException
 			 String sqlQuery ="insert into lit(patientid,chambreid) value(?,?)";
 			 PreparedStatement  statement = DBConnection.connect().prepareStatement(sqlQuery);
 			 
+<<<<<<< Updated upstream
 			 statement.setString(1, patientList.getSelectedItem().toString()); 
 			 statement.setString(2, chambreList.getSelectedItem().toString());
+=======
+			 statement.setString(2, chambreList.getSelectedItem().toString()); 
+			 statement.setString(1, patientList.getSelectedItem().toString());
+>>>>>>> Stashed changes
 			 
 			 statement.executeUpdate();
 			 

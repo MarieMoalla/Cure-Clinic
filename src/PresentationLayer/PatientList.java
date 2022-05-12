@@ -9,7 +9,9 @@ import java.awt.SystemColor;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.swing.ImageIcon;
@@ -24,6 +26,7 @@ import javax.swing.table.DefaultTableModel;
 
 import com.mysql.cj.util.StringUtils;
 
+import DataAccessLayer.DBConnection;
 import DataAccessLayer.Main;
 
 import javax.swing.JScrollPane;
@@ -58,7 +61,7 @@ public class PatientList extends JFrame {
 			setForeground(Color.DARK_GRAY);
 			setBackground(Color.DARK_GRAY);
 			setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\Marie\\eclipse-workspace\\Cure Clinic\\src\\assets\\hostel.png"));
-			setBounds(100, 100, 1004, 559);
+			setBounds(100, 100, 1064, 559);
 			
 			contentPane = new JPanel();
 			contentPane.setBackground(SystemColor.control);
@@ -71,7 +74,7 @@ public class PatientList extends JFrame {
 	{
 		JPanel header = new JPanel();
 		header.setToolTipText("");
-		header.setBackground(Color.DARK_GRAY);
+		header.setBackground(new java.awt.Color(60, 185, 145));
 		FlowLayout fl_header = (FlowLayout) header.getLayout();
 		fl_header.setHgap(0);
 		fl_header.setVgap(10);
@@ -91,10 +94,11 @@ public class PatientList extends JFrame {
 	{
 		JPanel content = new JPanel();
 		contentPane.add(content, BorderLayout.CENTER);
-		content.setLayout(new BorderLayout(5, 5));
+		content.setLayout(null);
 		{
 			JScrollPane scrollPane = new JScrollPane();
-			content.add(scrollPane, BorderLayout.CENTER);
+			scrollPane.setBounds(10, 54, 960, 305);
+			content.add(scrollPane);
 			{
 				
 				table.setFillsViewportHeight(true);
@@ -118,15 +122,42 @@ public class PatientList extends JFrame {
 			}
 			{
 				JPanel panel = new JPanel();
-				content.add(panel, BorderLayout.NORTH);
+				panel.setBounds(0, 0, 970, 49);
+				content.add(panel);
+				panel.setLayout(null);
 				{
+					{
+						JButton addBtn = new JButton();
+						addBtn.setBounds(422, 10, 176, 39);
+						panel.add(addBtn);
+						addBtn.setBackground(new Color(115, 147, 179));
+						addBtn.setForeground(new java.awt.Color(255, 255, 255));
+						addBtn.setFont(new Font("Poppins Medium", Font.BOLD, 20));
+						addBtn.setText("ADD");
+						addBtn.setToolTipText("\r\n");
+						addBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+					     
+						public void mousePressed(java.awt.event.MouseEvent evt) {
+				            	try {
+									ajoutPatientButtonMousePressed(evt);
+								} catch (SQLException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+				            }
+	         });
+				}	
+					
+					
 					
 					JButton deleteBtn = new JButton();
+					deleteBtn.setBounds(794, 10, 176, 39);
 					panel.add(deleteBtn);
 					deleteBtn.setBackground(new Color(255, 182, 193));
-					deleteBtn.setFont(new Font("Poppins SemiBold", Font.PLAIN,20));
+					deleteBtn.setForeground(new java.awt.Color(255, 255, 255));
+					deleteBtn.setFont(new Font("Poppins Medium", Font.BOLD, 20));
 					deleteBtn.setText("DELETE");
-					deleteBtn.setToolTipText("Clear");
+					deleteBtn.setToolTipText("\r\n");
 					deleteBtn.addMouseListener(new java.awt.event.MouseAdapter() {
 				        public void mousePressed(java.awt.event.MouseEvent evt) {
 				            try {
@@ -137,8 +168,36 @@ public class PatientList extends JFrame {
 							}
 				        }
 				    });
+					{
+						JButton submit = new JButton("New button");
+						submit.setBounds(608, 10, 176, 39);
+						submit.setFont(new Font("Poppins Medium", Font.BOLD, 20)); // NOI18N
+						submit.setForeground(new java.awt.Color(255, 255, 255));
+						submit.setIcon(new ImageIcon(AjoutChambreFrom.class.getResource("/assets/btn300x60.png"))); // NOI18N
+						submit.setText("Update");
+						submit.setBorder(null);
+						submit.setBorderPainted(false);
+						submit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+						submit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+						//btnNewButton.setPreferredSize(new Dimension(260, 140));
+						submit.setSelectedIcon(new ImageIcon(AjoutChambreFrom.class.getResource("/assets/btn300x60.png")));
+						submit.addMouseListener(new java.awt.event.MouseAdapter() {
+					        public void mousePressed(java.awt.event.MouseEvent evt) {
+					            try {
+					            	updateButtonMousePressed(evt);
+								} 
+								catch (Exception e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+					        }
+					    });
+						panel.add(submit);
+					}
+					
 				}
 			}
+			
 			getList();
 			
 		}
@@ -178,6 +237,29 @@ public class PatientList extends JFrame {
 			JOptionPane.showMessageDialog(null, "Patient Successfully deleted!", "Done", 1,icon);
 			this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
 	}
+	
+
+	public void updateButtonMousePressed(java.awt.event.MouseEvent evt) throws Exception
+	{
+		int row = table.getSelectedRow();
+		System.out.println("selected row to update"+table.getModel().getValueAt(row, 0));
+		
+		Connection conn = Main.getConnection();
+		String patientQuery = "update patient set firstname=?,lastname=?,Maladie=?,age=?,telephone=? where id="+table.getModel().getValueAt(row, 0);
+	    PreparedStatement  statement = DBConnection.connect().prepareStatement(patientQuery);
+	    
+	    statement.setString(1, table.getModel().getValueAt(row, 1).toString()); 
+	    statement.setString(2, table.getModel().getValueAt(row, 2).toString()); 
+	    statement.setString(3, table.getModel().getValueAt(row, 3).toString()); 
+	    statement.setString(4, table.getModel().getValueAt(row, 4).toString()); 
+	    statement.setString(5, table.getModel().getValueAt(row, 5).toString()); 
+	    
+	    statement.executeUpdate();
+	    JOptionPane.showMessageDialog(null, "patient info updated!", "Updated", 1,null);
+		this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+	    
+	}
+	
 //	}
 	public void left()
 	{
@@ -227,7 +309,7 @@ public class PatientList extends JFrame {
 			String med = res.getString("MedecinId");
 			
 			
-			String tabData[] = {Integer.toString(id),fn,ln,age,m,tel,lit,med};
+			String tabData[] = {Integer.toString(id),fn,ln,m,age,tel,lit,med};
 			DefaultTableModel tblModel = (DefaultTableModel) table.getModel();
 			tblModel.addRow(tabData);
 		}	
@@ -235,6 +317,13 @@ public class PatientList extends JFrame {
 		
 
 		
+	}
+	private void ajoutPatientButtonMousePressed(java.awt.event.MouseEvent evt) throws SQLException {
+
+		 AjoutPatientForm frame = new AjoutPatientForm();
+	    frame.setVisible(true);
+	           
+
 	}
 	
 	public PatientList() throws Exception {

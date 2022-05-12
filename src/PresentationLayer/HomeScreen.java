@@ -66,7 +66,7 @@ public void header()
 {
 	JPanel header = new JPanel();
 	header.setToolTipText("");
-	header.setBackground(new java.awt.Color(51, 51, 51));
+	header.setBackground(new java.awt.Color(60, 185, 145));
 	FlowLayout fl_header = (FlowLayout) header.getLayout();
 	fl_header.setHgap(0);
 	fl_header.setVgap(10);
@@ -131,17 +131,25 @@ public void content () throws IOException
 		{
 			        public void mousePressed(java.awt.event.MouseEvent evt) {
 			            	try {
+<<<<<<< Updated upstream
 			            		MedecinList frame = new MedecinList();
 			            	    frame.setVisible(true);
 							} catch (SQLException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
+=======
+			            		listeMedecinButtonMousePressed(evt);
+>>>>>>> Stashed changes
 							} catch (Exception e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
 			            }
          });
+<<<<<<< Updated upstream
+=======
+		
+>>>>>>> Stashed changes
 		
 		JButton voirPatient = new JButton("New button");
 		voirPatient.setBackground(Color.LIGHT_GRAY);
@@ -158,13 +166,25 @@ public void content () throws IOException
 		voirPatient.setPreferredSize(new Dimension(60, 60));
 		voirPatient.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 		voirPatient.setFont(new Font("Poppins Medium", Font.PLAIN, 20));
+		voirPatient.addMouseListener(new java.awt.event.MouseAdapter() 
+		{
+			        public void mousePressed(java.awt.event.MouseEvent evt) {
+			            	try {
+			            		listePatientButtonMousePressed(evt);
+							} catch (Exception e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+			            }
+         });
+		
 		
 		JButton voirLit = new JButton("New button");
 		voirLit.setBackground(Color.LIGHT_GRAY);
 		buttonSpot.add(voirLit);
 		voirLit.setForeground(new java.awt.Color(80, 180, 140));
 		voirLit.setIcon(new ImageIcon("D:\\Marie\\eclipse-workspace\\Cure Clinic\\src\\assets\\bedroom.png")); // NOI18N
-		voirLit.setText("PATIENT LIST");
+		voirLit.setText("LIT LIST");
 		voirLit.setBorder(null);
 		voirLit.setBorderPainted(false);
 		voirLit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -174,13 +194,24 @@ public void content () throws IOException
 		voirLit.setPreferredSize(new Dimension(60, 60));
 		voirLit.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 		voirLit.setFont(new Font("Poppins Medium", Font.PLAIN, 20));
+		voirLit.addMouseListener(new java.awt.event.MouseAdapter() 
+		{
+			        public void mousePressed(java.awt.event.MouseEvent evt) {
+			            	try {
+			            		listeLitButtonMousePressed(evt);
+							} catch (Exception e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+			            }
+         });
 		
 		JButton voirChambre = new JButton("New button");
 		voirChambre.setBackground(Color.LIGHT_GRAY);
 		buttonSpot.add(voirChambre);
 		voirChambre.setForeground(new java.awt.Color(80, 180, 140));
 		voirChambre.setIcon(new ImageIcon("D:\\Marie\\eclipse-workspace\\Cure Clinic\\src\\assets\\test.png")); // NOI18N
-		voirChambre.setText("PATIENT LIST");
+		voirChambre.setText("CHAMBRE LIST");
 		voirChambre.setBorder(null);
 		voirChambre.setBorderPainted(false);
 		voirChambre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -190,6 +221,17 @@ public void content () throws IOException
 		voirChambre.setPreferredSize(new Dimension(60, 60));
 		voirChambre.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 		voirChambre.setFont(new Font("Poppins Medium", Font.PLAIN, 20));
+		voirChambre.addMouseListener(new java.awt.event.MouseAdapter() 
+		{
+			        public void mousePressed(java.awt.event.MouseEvent evt) {
+			            	try {
+			            		listeChambreButtonMousePressed(evt);
+							} catch (Exception e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+			            }
+         });
 		
 		JButton ajoutMedecin = new JButton("New button");
 		buttonSpot.add(ajoutMedecin);
@@ -290,7 +332,7 @@ public void content () throws IOException
 		{
 			        public void mousePressed(java.awt.event.MouseEvent evt) {
 			            	try {
-								ajoutChambreButtonMousePressed(evt);
+								ajoutChambreButtonMousePressed1(evt);
 							} catch (SQLException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
@@ -330,6 +372,14 @@ private void ajoutMedecinButtonMousePressed(java.awt.event.MouseEvent evt) throw
   
 }
 
+private void ajoutChambreButtonMousePressed1(java.awt.event.MouseEvent evt) throws SQLException {
+
+	 AjoutChambreFrom frame = new AjoutChambreFrom();
+    frame.setVisible(true);
+           
+
+}
+
 private void ajoutPatientButtonMousePressed(java.awt.event.MouseEvent evt) throws SQLException {
 
 	 AjoutPatientForm frame = new AjoutPatientForm();
@@ -346,13 +396,38 @@ private void ajoutLitButtonMousePressed(java.awt.event.MouseEvent evt) throws SQ
 
 }
 
-private void ajoutChambreButtonMousePressed(java.awt.event.MouseEvent evt) throws SQLException {
+private void listeChambreButtonMousePressed(java.awt.event.MouseEvent evt) throws Exception {
 
-	 AjoutChambreFrom frame = new AjoutChambreFrom();
+	 ChambreList frame = new ChambreList();
     frame.setVisible(true);
            
 
 }
+
+private void listeLitButtonMousePressed(java.awt.event.MouseEvent evt) throws Exception {
+
+	 LitList frame = new LitList();
+   frame.setVisible(true);
+          
+
+}
+
+private void listePatientButtonMousePressed(java.awt.event.MouseEvent evt) throws Exception {
+
+	 PatientList frame = new PatientList();
+   frame.setVisible(true);
+          
+
+}
+
+private void listeMedecinButtonMousePressed(java.awt.event.MouseEvent evt) throws Exception {
+
+	 MedecinList frame = new MedecinList();
+   frame.setVisible(true);
+          
+
+}
+
 
 public HomeScreen() throws IOException {
 	initComponent();

@@ -74,7 +74,7 @@ public class MedecinList extends JFrame {
 	{
 		JPanel header = new JPanel();
 		header.setToolTipText("");
-		header.setBackground(Color.DARK_GRAY);
+		header.setBackground(new java.awt.Color(60, 185, 145));
 		FlowLayout fl_header = (FlowLayout) header.getLayout();
 		fl_header.setHgap(0);
 		fl_header.setVgap(10);
@@ -126,14 +126,48 @@ public class MedecinList extends JFrame {
 				content.add(panel);
 				panel.setLayout(null);
 				{
+					{
+						JButton addBtn = new JButton();
+						addBtn.setBounds(422, 10, 176, 39);
+						panel.add(addBtn);
+						addBtn.setBackground(new Color(115, 147, 179));
+						addBtn.setForeground(new java.awt.Color(255, 255, 255));
+						addBtn.setFont(new Font("Poppins Medium", Font.BOLD, 20));
+						addBtn.setText("ADD");
+						addBtn.setToolTipText("\r\n");
+						addBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+					     
+						public void mousePressed(java.awt.event.MouseEvent evt) {
+				            	try {
+									ajoutMedecinButtonMousePressed(evt);
+								} catch (SQLException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+				            }
+	         });
+				}	
+					
+					
 					
 					JButton deleteBtn = new JButton();
 					deleteBtn.setBounds(794, 10, 176, 39);
 					panel.add(deleteBtn);
 					deleteBtn.setBackground(new Color(255, 182, 193));
-					deleteBtn.setFont(new Font("Poppins SemiBold", Font.PLAIN, 15));
+					deleteBtn.setForeground(new java.awt.Color(255, 255, 255));
+					deleteBtn.setFont(new Font("Poppins Medium", Font.BOLD, 20));
 					deleteBtn.setText("DELETE");
 					deleteBtn.setToolTipText("\r\n");
+					deleteBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+				        public void mousePressed(java.awt.event.MouseEvent evt) {
+				            try {
+								deleteButtonMousePressed(evt);
+							} catch (Exception e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+				        }
+				    });
 					{
 						JButton submit = new JButton("New button");
 						submit.setBounds(608, 10, 176, 39);
@@ -199,7 +233,7 @@ public class MedecinList extends JFrame {
 		System.out.println("selected row to update"+table.getModel().getValueAt(row, 0));
 		
 		Connection conn = Main.getConnection();
-		String patientQuery = "update medecin set firstname= ?,lastname=?,speciality=? where id="+table.getModel().getValueAt(row, 0);
+		String patientQuery = "update medecin set firstname=?,lastname=?,speciality=? where id="+table.getModel().getValueAt(row, 0);
 	    PreparedStatement  statement = DBConnection.connect().prepareStatement(patientQuery);
 	    
 	    statement.setString(1, table.getModel().getValueAt(row, 1).toString()); 
@@ -255,6 +289,14 @@ public class MedecinList extends JFrame {
 
 		
 	}
+	
+	private void ajoutMedecinButtonMousePressed(java.awt.event.MouseEvent evt) throws SQLException {
+
+		 AjoutMedecinForm frame = new AjoutMedecinForm();
+        frame.setVisible(true);
+               
+ 
+}
 	
 	public MedecinList() throws Exception {
 		initComponent();

@@ -10,6 +10,7 @@ import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.swing.ImageIcon;
@@ -71,7 +72,7 @@ public class ChambreList extends JFrame {
 	{
 		JPanel header = new JPanel();
 		header.setToolTipText("");
-		header.setBackground(Color.DARK_GRAY);
+		header.setBackground(new java.awt.Color(60, 185, 145));
 		FlowLayout fl_header = (FlowLayout) header.getLayout();
 		fl_header.setHgap(0);
 		fl_header.setVgap(10);
@@ -120,11 +121,34 @@ public class ChambreList extends JFrame {
 				JPanel panel = new JPanel();
 				content.add(panel, BorderLayout.NORTH);
 				{
-					
+					{
+						JButton addBtn = new JButton();
+						addBtn.setBounds(422, 10, 176, 39);
+						panel.add(addBtn);
+						addBtn.setBackground(new Color(115, 147, 179));
+						addBtn.setForeground(new java.awt.Color(255, 255, 255));
+						addBtn.setFont(new Font("Poppins Medium", Font.BOLD, 20));
+						addBtn.setText("ADD");
+						addBtn.setToolTipText("\r\n");
+						addBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+					     
+						public void mousePressed(java.awt.event.MouseEvent evt) {
+				            	try {
+									ajoutChambreButtonMousePressed1(evt);
+								} catch (SQLException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+				            }
+	         });
+				}	
+				
+					{
 					JButton deleteBtn = new JButton();
 					panel.add(deleteBtn);
 					deleteBtn.setBackground(new Color(255, 182, 193));
-					deleteBtn.setFont(new Font("Poppins SemiBold", Font.PLAIN,20));
+					deleteBtn.setForeground(new java.awt.Color(255, 255, 255));
+					deleteBtn.setFont(new Font("Poppins SemiBold", Font.BOLD,20));
 					deleteBtn.setText("DELETE");
 					deleteBtn.setToolTipText("Clear");
 					deleteBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -136,7 +160,7 @@ public class ChambreList extends JFrame {
 								e.printStackTrace();
 							}
 				        }
-				    });
+				    });}
 				}
 			}
 			getList();
@@ -203,6 +227,14 @@ public class ChambreList extends JFrame {
 		
 
 		
+	}
+	
+	private void ajoutChambreButtonMousePressed1(java.awt.event.MouseEvent evt) throws SQLException {
+
+		 AjoutChambreFrom frame = new AjoutChambreFrom();
+	    frame.setVisible(true);
+	           
+
 	}
 	
 	public ChambreList() throws Exception {
