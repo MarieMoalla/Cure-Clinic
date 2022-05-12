@@ -245,13 +245,10 @@ public void saveLitInfo() throws SQLException
 			 String sqlQuery ="insert into lit(patientid,chambreid) value(?,?)";
 			 PreparedStatement  statement = DBConnection.connect().prepareStatement(sqlQuery);
 			 
-<<<<<<< Updated upstream
-			 statement.setString(1, patientList.getSelectedItem().toString()); 
-			 statement.setString(2, chambreList.getSelectedItem().toString());
-=======
+
 			 statement.setString(2, chambreList.getSelectedItem().toString()); 
 			 statement.setString(1, patientList.getSelectedItem().toString());
->>>>>>> Stashed changes
+
 			 
 			 statement.executeUpdate();
 			 

@@ -131,25 +131,15 @@ public void content () throws IOException
 		{
 			        public void mousePressed(java.awt.event.MouseEvent evt) {
 			            	try {
-<<<<<<< Updated upstream
-			            		MedecinList frame = new MedecinList();
-			            	    frame.setVisible(true);
-							} catch (SQLException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-=======
 			            		listeMedecinButtonMousePressed(evt);
->>>>>>> Stashed changes
 							} catch (Exception e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
+			            		
 							}
 			            }
          });
-<<<<<<< Updated upstream
-=======
-		
->>>>>>> Stashed changes
+
 		
 		JButton voirPatient = new JButton("New button");
 		voirPatient.setBackground(Color.LIGHT_GRAY);
