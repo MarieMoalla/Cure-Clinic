@@ -118,7 +118,7 @@ public void content () throws IOException
 		buttonSpot.add(voirMedecin);
 		voirMedecin.setForeground(new java.awt.Color(80, 180, 140));
 		voirMedecin.setIcon(new ImageIcon("D:\\Marie\\eclipse-workspace\\Cure Clinic\\src\\assets\\medical-team.png")); // NOI18N
-		voirMedecin.setText("MEDECIN LIST");
+		voirMedecin.setText("DOCTORS LIST");
 		voirMedecin.setBorder(null);
 		voirMedecin.setBorderPainted(false);
 		voirMedecin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -146,7 +146,7 @@ public void content () throws IOException
 		buttonSpot.add(voirPatient);
 		voirPatient.setForeground(new java.awt.Color(80, 180, 140));
 		voirPatient.setIcon(new ImageIcon("D:\\Marie\\eclipse-workspace\\Cure Clinic\\src\\assets\\queue.png")); // NOI18N
-		voirPatient.setText("PATIENT LIST");
+		voirPatient.setText("PATIENTS LIST");
 		voirPatient.setBorder(null);
 		voirPatient.setBorderPainted(false);
 		voirPatient.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -174,7 +174,7 @@ public void content () throws IOException
 		buttonSpot.add(voirLit);
 		voirLit.setForeground(new java.awt.Color(80, 180, 140));
 		voirLit.setIcon(new ImageIcon("D:\\Marie\\eclipse-workspace\\Cure Clinic\\src\\assets\\bedroom.png")); // NOI18N
-		voirLit.setText("LIT LIST");
+		voirLit.setText("BEDS LIST");
 		voirLit.setBorder(null);
 		voirLit.setBorderPainted(false);
 		voirLit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -201,7 +201,7 @@ public void content () throws IOException
 		buttonSpot.add(voirChambre);
 		voirChambre.setForeground(new java.awt.Color(80, 180, 140));
 		voirChambre.setIcon(new ImageIcon("D:\\Marie\\eclipse-workspace\\Cure Clinic\\src\\assets\\test.png")); // NOI18N
-		voirChambre.setText("CHAMBRE LIST");
+		voirChambre.setText("ROOMS LIST");
 		voirChambre.setBorder(null);
 		voirChambre.setBorderPainted(false);
 		voirChambre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -228,7 +228,7 @@ public void content () throws IOException
 		ajoutMedecin.setBackground(Color.LIGHT_GRAY);
 		ajoutMedecin.setForeground(new java.awt.Color(80, 180, 140));
 		ajoutMedecin.setIcon(new ImageIcon("D:\\Marie\\eclipse-workspace\\Cure Clinic\\src\\assets\\cross.png")); // NOI18N
-		ajoutMedecin.setText("ADD MEDECIN");
+		ajoutMedecin.setText("ADD DOCTOR");
 		ajoutMedecin.setBorder(null);
 		ajoutMedecin.setBorderPainted(false);
 		ajoutMedecin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -281,7 +281,7 @@ public void content () throws IOException
 		ajoutLit.setBackground(Color.LIGHT_GRAY);
 		ajoutLit.setForeground(new java.awt.Color(80, 180, 140));
 		ajoutLit.setIcon(new ImageIcon("D:\\Marie\\eclipse-workspace\\Cure Clinic\\src\\assets\\cross.png")); // NOI18N
-		ajoutLit.setText("ADD LIT");
+		ajoutLit.setText("ADD BED");
 		ajoutLit.setBorder(null);
 		ajoutLit.setBorderPainted(false);
 		ajoutLit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -308,7 +308,7 @@ public void content () throws IOException
 		ajoutChambre.setBackground(Color.LIGHT_GRAY);
 		ajoutChambre.setForeground(new java.awt.Color(80, 180, 140));
 		ajoutChambre.setIcon(new ImageIcon("D:\\Marie\\eclipse-workspace\\Cure Clinic\\src\\assets\\cross.png")); // NOI18N
-		ajoutChambre.setText("ADD CHAMBRE");
+		ajoutChambre.setText("ADD ROOM");
 		ajoutChambre.setBorder(null);
 		ajoutChambre.setBorderPainted(false);
 		ajoutChambre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));

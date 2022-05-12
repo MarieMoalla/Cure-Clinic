@@ -80,7 +80,7 @@ public class MedecinList extends JFrame {
 		fl_header.setVgap(10);
 		contentPane.add(header, BorderLayout.NORTH);
 		
-		JLabel AJOUTMEDECIN = new JLabel("MEDECINS");
+		JLabel AJOUTMEDECIN = new JLabel("DOCTORS");
 		AJOUTMEDECIN.setIcon(new ImageIcon("D:\\Marie\\eclipse-workspace\\Cure Clinic\\src\\assets\\medical-team.png"));
 		AJOUTMEDECIN.setHorizontalAlignment(SwingConstants.CENTER);
 		AJOUTMEDECIN.setFont(new Font("Poppins SemiBold", Font.BOLD, 30));

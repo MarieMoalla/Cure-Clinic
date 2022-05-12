@@ -114,7 +114,7 @@ public class PatientList extends JFrame {
 						
 					},
 					new String[] {
-						"ID","First Name", "Last Name", "maladie","Age","Telephone","LitId","Medecin Id"
+						"ID","First Name", "Last Name", "sickness","Age","Phone","BedId","Doctor Id"
 					}
 				));
 				//table.getColumnModel().getColumn(3).setPreferredWidth(56);

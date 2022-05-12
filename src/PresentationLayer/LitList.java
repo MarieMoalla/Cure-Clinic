@@ -55,7 +55,7 @@ public class LitList extends JFrame {
 	public void initComponent()
 		{
 			setFont(new Font("Poppins Medium", Font.PLAIN, 12));
-			setTitle("Lits");
+			setTitle("Beds");
 			setForeground(Color.DARK_GRAY);
 			setBackground(Color.DARK_GRAY);
 			setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\Marie\\eclipse-workspace\\Cure Clinic\\src\\assets\\hostel.png"));
@@ -78,7 +78,7 @@ public class LitList extends JFrame {
 		fl_header.setVgap(10);
 		contentPane.add(header, BorderLayout.NORTH);
 		
-		JLabel AJOUTMEDECIN = new JLabel("Lits");
+		JLabel AJOUTMEDECIN = new JLabel("Beds");
 		AJOUTMEDECIN.setIcon(new ImageIcon("D:\\Marie\\eclipse-workspace\\Cure Clinic\\src\\assets\\medical-team.png"));
 		AJOUTMEDECIN.setHorizontalAlignment(SwingConstants.CENTER);
 		AJOUTMEDECIN.setFont(new Font("Poppins SemiBold", Font.BOLD, 30));
@@ -111,7 +111,7 @@ public class LitList extends JFrame {
 						
 					},
 					new String[] {
-						"ID","¨PatientId", "ChambreId"
+						"ID","¨PatientId", "RoomId"
 					}
 				));
 				//table.getColumnModel().getColumn(3).setPreferredWidth(56);
@@ -181,7 +181,7 @@ public class LitList extends JFrame {
 	    Statement statement = conn.createStatement();
 	    
 		ResultSet res = statement.executeQuery(patientQuery);
-		if (res.next())  JOptionPane.showMessageDialog(null, "Lit déja occupé par un patient vous ne pouvez pas le supprimer", "Action Denied", 0);
+		if (res.next())  JOptionPane.showMessageDialog(null, "Bed occupied by a patient you can't delete it", "Action Denied", 0);
 		else 
 		{
 			String deleteQuery = "delete from Lit where id="+table.getModel().getValueAt(row, 0);
@@ -189,7 +189,7 @@ public class LitList extends JFrame {
 		    statement2.executeUpdate(deleteQuery);
 			//ResultSet res2 = statement2.executeQuery(deleteQuery);
 			ImageIcon icon = new ImageIcon("src/asstes/checked.png");
-			JOptionPane.showMessageDialog(null, "Lit Successfully deleted!", "Done", 1,icon);
+			JOptionPane.showMessageDialog(null, "Bed Successfully deleted!", "Done", 1,icon);
 			this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
 		}
 	}
