@@ -55,7 +55,7 @@ public class ChambreList extends JFrame {
 	public void initComponent()
 		{
 			setFont(new Font("Poppins Medium", Font.PLAIN, 12));
-			setTitle("MEDECINS");
+			setTitle("ROOMS");
 			setForeground(Color.DARK_GRAY);
 			setBackground(Color.DARK_GRAY);
 			setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\Marie\\eclipse-workspace\\Cure Clinic\\src\\assets\\hostel.png"));
@@ -78,7 +78,7 @@ public class ChambreList extends JFrame {
 		fl_header.setVgap(10);
 		contentPane.add(header, BorderLayout.NORTH);
 		
-		JLabel AJOUTMEDECIN = new JLabel("Chambres");
+		JLabel AJOUTMEDECIN = new JLabel("ROOMS");
 		AJOUTMEDECIN.setIcon(new ImageIcon("D:\\Marie\\eclipse-workspace\\Cure Clinic\\src\\assets\\medical-team.png"));
 		AJOUTMEDECIN.setHorizontalAlignment(SwingConstants.CENTER);
 		AJOUTMEDECIN.setFont(new Font("Poppins SemiBold", Font.BOLD, 30));
