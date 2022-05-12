@@ -169,6 +169,7 @@ public void content() throws SQLException
 	litList.setMaximumRowCount(10);
 	litList.setSelectedItem(null);
 	litList = new javax.swing.JComboBox<>();
+	litList.setModel(new DefaultComboBoxModel(new String[] {"None"}));
 	litList.setBounds(216, 205,  200, 30);
 	litList.setFont(new Font("Poppins", Font.PLAIN, 20));
 	content.add(litList);
@@ -267,7 +268,7 @@ public void  remplirLitList(JComboBox list) throws SQLException
 	System.out.print("lit totale"+ list.getItemCount()+"\n");
 }
 
-public void remplirtList(JComboBox list,String type) throws SQLException
+	public void remplirtList(JComboBox list,String type) throws SQLException
 {
 	String allQuery = "select * from "+type+"";
     Connection conn = DBConnection.connect();
@@ -282,15 +283,15 @@ public void remplirtList(JComboBox list,String type) throws SQLException
 	System.out.print(type+" totale"+ list.getItemCount()+"\n");
 }
 
-public void submitButtonMousePressed(java.awt.event.MouseEvent evt) throws SQLException {//GEN-FIRST:event_ClearButtonMousePressed
+	public void submitButtonMousePressed(java.awt.event.MouseEvent evt) throws SQLException {//GEN-FIRST:event_ClearButtonMousePressed
 	saveLitInfo();
 }
 
-public void saveLitInfo() throws SQLException
+	public void saveLitInfo() throws SQLException
 {
 	//String selectedValue = chambreList.getSelectedItem().toString();
 	
-			 if(litList.getSelectedItem() != null)
+			 if(litList.getSelectedItem() != "None")
 			 {
 			 String sqlQuery ="insert into patient(FirstName, LastName, Maladie, Age, Telephone, LitId, MedecinId) value(?,?,?,?,?,?,?)";
 			 PreparedStatement  statement = DBConnection.connect().prepareStatement(sqlQuery);

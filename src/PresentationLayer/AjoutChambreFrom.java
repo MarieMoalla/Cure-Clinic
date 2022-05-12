@@ -8,6 +8,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,6 +17,7 @@ import java.sql.Statement;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -125,6 +127,9 @@ public void saveChambreInfo() throws SQLException
 	 PreparedStatement  statement = DBConnection.connect().prepareStatement(sqlQuery);
 	 
 	 statement.executeUpdate();
+		ImageIcon icon = new ImageIcon("src/asstes/checked.png");
+		JOptionPane.showMessageDialog(null, "Room Successfully added!", "Added", 1,icon);
+		this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
 	 System.out.println("Inserted...");
 }
 
@@ -140,7 +145,8 @@ public void saveChambreInfo() throws SQLException
 		{	
 			int id = res.getInt("id");
 			System.out.print("Chamber number"+ id +"\n");
-		}	
+		}
+
 	}
 
 

@@ -245,10 +245,28 @@ public void saveLitInfo() throws SQLException
 			 String sqlQuery ="insert into lit(patientid,chambreid) value(?,?)";
 			 PreparedStatement  statement = DBConnection.connect().prepareStatement(sqlQuery);
 			 
-			 statement.setString(1, chambreList.getSelectedItem().toString()); 
-			 statement.setString(2, patientList.getSelectedItem().toString());
+			 statement.setString(1, patientList.getSelectedItem().toString()); 
+			 statement.setString(2, chambreList.getSelectedItem().toString());
 			 
 			 statement.executeUpdate();
+			 
+			 int id = 0 ;
+			 {  
+				
+				String patientQuery = "select * from lit where patientid="+patientList.getSelectedItem();
+			    Statement statement3 = DBConnection.connect().createStatement();
+				ResultSet res3 = statement3.executeQuery(patientQuery);
+				
+				if(res3.next()) id=res3.getInt("id");
+			 }
+			 //change patient's patient id to new patient's id
+			 String litQuery = "update patient set litid=? where id=?";
+			 PreparedStatement  statement2 = DBConnection.connect().prepareStatement(litQuery);
+			 statement2.setString(1,Integer.toString(id));
+			 statement2.setString(2, patientList.getSelectedItem().toString());
+			 statement2.executeUpdate();
+			 
+			 System.out.println("Inserted...");
 
 		}
 	 ImageIcon icon = new ImageIcon("src/asstes/checked.PNG");

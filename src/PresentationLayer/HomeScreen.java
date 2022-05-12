@@ -115,7 +115,6 @@ public void content () throws IOException
 		JButton voirMedecin = new JButton("New button");
 		voirMedecin.setFont(new Font("Poppins Medium", Font.PLAIN, 20));
 		voirMedecin.setBackground(Color.LIGHT_GRAY);
-		
 		buttonSpot.add(voirMedecin);
 		voirMedecin.setForeground(new java.awt.Color(80, 180, 140));
 		voirMedecin.setIcon(new ImageIcon("D:\\Marie\\eclipse-workspace\\Cure Clinic\\src\\assets\\medical-team.png")); // NOI18N
@@ -128,6 +127,21 @@ public void content () throws IOException
 		voirMedecin.setOpaque(false);
 		voirMedecin.setPreferredSize(new Dimension(60, 60));
 		voirMedecin.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+		voirMedecin.addMouseListener(new java.awt.event.MouseAdapter() 
+		{
+			        public void mousePressed(java.awt.event.MouseEvent evt) {
+			            	try {
+			            		MedecinList frame = new MedecinList();
+			            	    frame.setVisible(true);
+							} catch (SQLException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							} catch (Exception e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+			            }
+         });
 		
 		JButton voirPatient = new JButton("New button");
 		voirPatient.setBackground(Color.LIGHT_GRAY);
