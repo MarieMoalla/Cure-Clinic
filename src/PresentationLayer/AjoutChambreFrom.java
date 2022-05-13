@@ -75,7 +75,7 @@ public void header()
 	fl_header.setVgap(10);
 	contentPane.add(header, BorderLayout.NORTH);
 	
-	JLabel AJOUTMEDECIN = new JLabel("AJOUT CHAMBRE");
+	JLabel AJOUTMEDECIN = new JLabel("ADD ROOM");
 	AJOUTMEDECIN.setIcon(new ImageIcon("D:\\Marie\\eclipse-workspace\\Cure Clinic\\src\\assets\\test.png"));
 	AJOUTMEDECIN.setHorizontalAlignment(SwingConstants.CENTER);
 	AJOUTMEDECIN.setFont(new Font("Poppins SemiBold", Font.BOLD, 30));

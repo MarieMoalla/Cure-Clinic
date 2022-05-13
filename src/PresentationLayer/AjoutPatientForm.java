@@ -91,7 +91,7 @@ public void header()
 	fl_header.setVgap(10);
 	contentPane.add(header, BorderLayout.NORTH);
 	
-	JLabel AJOUTMEDECIN = new JLabel("AJOUT PATIENT");
+	JLabel AJOUTMEDECIN = new JLabel("ADD PATIENT");
 	AJOUTMEDECIN.setIcon(new ImageIcon("D:\\Marie\\eclipse-workspace\\Cure Clinic\\src\\assets\\queue.png"));
 	AJOUTMEDECIN.setHorizontalAlignment(SwingConstants.CENTER);
 	AJOUTMEDECIN.setFont(new Font("Poppins SemiBold", Font.BOLD, 30));
@@ -135,7 +135,7 @@ public void content() throws SQLException
 	content.add(lastName);
 	content.add(ln);
 	
-	maladie = new javax.swing.JLabel("Maladie");
+	maladie = new javax.swing.JLabel("Malady");
 	maladie.setBounds(6, 80,  200, 30);
 	maladie.setFont(new Font("Poppins Medium", Font.BOLD, 20));
 	maladie.setForeground(new Color(0, 150, 150));
@@ -157,7 +157,7 @@ public void content() throws SQLException
 	content.add(t);
 	
 	
-	JLabel litLabel = new JLabel("Lit List");
+	JLabel litLabel = new JLabel("Bed List");
 	litLabel.setBounds(6, 205,  200, 30);
 	content.add(litLabel);
 	litLabel.setFont(new Font("Poppins Medium", Font.BOLD, 20));

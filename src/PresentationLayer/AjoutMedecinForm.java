@@ -88,7 +88,7 @@ public void header()
 	fl_header.setVgap(10);
 	contentPane.add(header, BorderLayout.NORTH);
 	
-	JLabel AJOUTMEDECIN = new JLabel("AJOUT MEDECIN");
+	JLabel AJOUTMEDECIN = new JLabel("ADD DOCTOR");
 	AJOUTMEDECIN.setIcon(new ImageIcon("D:\\Marie\\eclipse-workspace\\Cure Clinic\\src\\assets\\medical-team.png"));
 	AJOUTMEDECIN.setHorizontalAlignment(SwingConstants.CENTER);
 	AJOUTMEDECIN.setFont(new Font("Poppins SemiBold", Font.BOLD, 30));

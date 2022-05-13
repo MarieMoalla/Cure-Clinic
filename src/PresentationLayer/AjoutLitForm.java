@@ -82,7 +82,7 @@ public void header()
 	fl_header.setVgap(10);
 	contentPane.add(header, BorderLayout.NORTH);
 	
-	JLabel AJOUTMEDECIN = new JLabel("AJOUT LIT");
+	JLabel AJOUTMEDECIN = new JLabel("ADD BED");
 	AJOUTMEDECIN.setIcon(new ImageIcon("D:\\Marie\\eclipse-workspace\\Cure Clinic\\src\\assets\\bedroom.png"));
 	AJOUTMEDECIN.setHorizontalAlignment(SwingConstants.CENTER);
 	AJOUTMEDECIN.setFont(new Font("Poppins SemiBold", Font.BOLD, 30));
@@ -115,7 +115,7 @@ public void content() throws SQLException
 	content.add(patientList);
 	remplirtList(patientList,"patient");
 	
-	JLabel chambreLabel = new JLabel("Chambre List\r\n");
+	JLabel chambreLabel = new JLabel("Room List\r\n");
 	chambreLabel.setBounds(5, 50, 200, 30);
 	content.add(chambreLabel);
 	chambreLabel.setFont(new Font("Poppins Medium", Font.BOLD, 20));
