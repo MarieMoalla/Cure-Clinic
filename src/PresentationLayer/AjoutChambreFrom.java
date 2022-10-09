@@ -134,7 +134,6 @@ public void saveChambreInfo() throws SQLException
 }
 
 	public AjoutChambreFrom() throws SQLException {
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		initComponent();
 		header();
 		content();
